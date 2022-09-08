@@ -4,22 +4,22 @@ kind: Deployment
 metadata:
   name: devops-deployment
   labels:
-    app: devops
+    app: <APP NAME>
     tier: frontend
 spec:
-  replicas: 3
+  replicas: <NUMBER OF INSTANCES>
   selector:
     matchLabels:
-      app: devops
+      app: <APP NAME>
       tier: frontend
   template:
     metadata:
       labels:
-        app: devops
+        app: <APP NAME>
         tier: frontend
     spec:
       containers:
-      - name: devops-demo
+      - name: <YOUR IMAGE NAME HERE>
         image: <YOUR IMAGE PATH HERE>
         ports:
         - containerPort: 8080
@@ -29,7 +29,7 @@ kind: Service
 metadata:
   name: devops-deployment-lb
   labels:
-    app: devops
+    app: <APP NAME>
     tier: frontend-lb
 spec:
   type: LoadBalancer
@@ -37,5 +37,5 @@ spec:
   - port: 80
     targetPort: 8080
   selector:
-    app: devops
+    app: <APP NAME>
     tier: frontend
